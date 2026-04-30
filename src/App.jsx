@@ -6,6 +6,7 @@ import moon from '../public/images/moon.png';
 import Linkedin from '../public/images/linkedin.png';
 import Location from '../public/images/location.png';
 import Email from '../public/images/email.png';
+import emailjs from '@emailjs/browser';
 
 
 // ── COMPONENTS ───────────────────────────────────────────────────────────────
@@ -236,11 +237,28 @@ function Contact() {
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
+
+  emailjs.send(
+    process.env.REACT_APP_SERVICE_ID,
+    process.env.REACT_APP_TEMPLATE_ID,
+    {
+      name: form.name,
+      email: form.email,
+      message: form.message,
+    },
+    process.env.REACT_APP_PUBLIC_KEY
+  )
+  .then(() => {
     setSent(true);
-    setTimeout(() => setSent(false), 4000);
     setForm({ name: "", email: "", message: "" });
-  };
+
+    setTimeout(() => setSent(false), 4000);
+  })
+  .catch((error) => {
+    console.log("Email failed:", error);
+  });
+};
 
   return (
     <section id="contact" className="contact section">
