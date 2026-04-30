@@ -7,40 +7,51 @@
 
 /* ── TOKENS ──────────────────────────────────────────── */
 :root {
-  --bg:          #f9f8f6;
-  --bg-2:        #f0ede8;
+  --bg:          #f9f8ff;
+  --bg-2:        #f1efff;
   --surface:     #ffffff;
-  --border:      #e5e0d8;
-  --text:        #1a1714;
-  --text-muted:  #6b6460;
-  --accent:      #d4622a;
-  --accent-2:    #e8935a;
-  --accent-bg:   #fdf0e8;
-  --nav-bg:      rgba(249, 248, 246, 0.85);
-  --shadow-sm:   0 2px 8px rgba(0,0,0,.06);
-  --shadow-md:   0 8px 32px rgba(0,0,0,.10);
-  --shadow-lg:   0 20px 60px rgba(0,0,0,.12);
+  --border:      #e6e1ff;
+
+  --text:        #1a1625;
+  --text-muted:  #6b6680;
+
+  --accent:      #7C3AED;   /* main purple */
+  --accent-2:    #A78BFA;   /* lighter purple */
+  --accent-bg:   #f3f0ff;   /* soft purple background */
+
+  --nav-bg:      rgba(249, 248, 255, 0.85);
+
+  --shadow-sm:   0 2px 8px rgba(124, 58, 237, 0.08);
+  --shadow-md:   0 8px 32px rgba(124, 58, 237, 0.12);
+  --shadow-lg:   0 20px 60px rgba(124, 58, 237, 0.16);
+
   --radius:      16px;
   --radius-sm:   10px;
   --radius-pill: 999px;
-  --font-head:   'DM Serif Display', Georgia, serif;
-  --font-body:   'DM Sans', system-ui, sans-serif;
+
+ --font-head: 'Space Grotesk', sans-serif;
+--font-body: 'Inter', sans-serif;
+
   --max-w:       1200px;
   --nav-h:       72px;
   --transition:  .25s cubic-bezier(.4,0,.2,1);
 }
 
 [data-theme="dark"] {
-  --bg:          #111009;
-  --bg-2:        #1a1815;
-  --surface:     #201e1b;
-  --border:      #2e2b27;
-  --text:        #f0ede8;
-  --text-muted:  #9a9590;
-  --accent:      #e8935a;
-  --accent-2:    #d4622a;
-  --accent-bg:   #2a1f16;
-  --nav-bg:      rgba(17, 16, 9, 0.9);
+  --bg:          #0f0b1a;
+  --bg-2:        #161225;
+  --surface:     #1c1730;
+  --border:      #2a2440;
+
+  --text:        #f3f0ff;
+  --text-muted:  #a59fbf;
+
+  --accent:      #8B5CF6;   /* brighter purple for dark */
+  --accent-2:    #C4B5FD;   /* soft highlight */
+  --accent-bg:   #1e1a36;
+
+  --nav-bg:      rgba(15, 11, 26, 0.9);
+
   --shadow-sm:   0 2px 8px rgba(0,0,0,.3);
   --shadow-md:   0 8px 32px rgba(0,0,0,.4);
   --shadow-lg:   0 20px 60px rgba(0,0,0,.5);
@@ -372,6 +383,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   object-position: top center;
   border-radius: 40% 48% 36% 52% / 40% 40% 56% 52%;
   box-shadow: var(--shadow-lg);
+  background-color: #a6a5a776;
 }
 
 .hero__badge {
