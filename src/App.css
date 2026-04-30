@@ -172,6 +172,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   display: flex; align-items: center; justify-content: center;
   transition: all var(--transition);
 }
+.btn-icon img { width: 20px; height: 20px; }
 .btn-icon:hover { background: var(--accent-bg); border-color: var(--accent); }
 
 /* ── TAGS ────────────────────────────────────────────── */
@@ -735,6 +736,10 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+}
+
+.contact__info-icon img {
+  width: 25px; height: 25px;
 }
 
 .contact__info-item strong {

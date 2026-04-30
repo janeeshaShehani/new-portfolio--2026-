@@ -1,5 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
+import sun from '../public/images/sun.png';
+import moon from '../public/images/moon.png';
+import Linkedin from '../public/images/linkedin.png';
+import Location from '../public/images/location.png';
+import Email from '../public/images/email.png';
+
 // ── DATA ────────────────────────────────────────────────────────────────────
 
 const NAV_LINKS = ["Home", "About", "Skills", "Projects", "Volunteering", "Contact"];
@@ -114,7 +120,7 @@ function Navbar({ dark, toggleDark }) {
 
       <div className="navbar__actions">
         <button className="btn-icon" onClick={toggleDark} title="Toggle theme" aria-label="Toggle theme">
-          {dark ? "☀️" : "🌙"}
+          {dark ? <img src={sun} alt="Sun" /> : <img src={moon} alt="Moon" />}
         </button>
         <a href="#" className="btn btn--outline btn--sm" download>
           Download CV
@@ -327,28 +333,28 @@ function Contact() {
       <div className="contact__layout">
         <div className="contact__info">
           <div className="contact__info-item">
-            <span className="contact__info-icon">📧</span>
+            <span className="contact__info-icon"><img src={Email} alt="Email" /></span>
             <div>
               <strong>Email</strong>
               <p>janeesha@example.com</p>
             </div>
           </div>
           <div className="contact__info-item">
-            <span className="contact__info-icon">📍</span>
+            <span className="contact__info-icon"><img src={Location} alt="Location" /></span>
             <div>
               <strong>Location</strong>
               <p>Colombo, Sri Lanka</p>
             </div>
           </div>
           <div className="contact__info-item">
-            <span className="contact__info-icon">💼</span>
+            <span className="contact__info-icon"><img src={Linkedin} alt="LinkedIn" /></span>
             <div>
               <strong>LinkedIn</strong>
               <p>linkedin.com/in/janeesha</p>
             </div>
           </div>
           <div className="contact__socials">
-            {["GitHub", "LinkedIn", "Twitter"].map((s) => (
+            {["GitHub", "LinkedIn"].map((s) => (
               <a key={s} href="#" className="social-btn">{s}</a>
             ))}
           </div>
@@ -384,7 +390,7 @@ function Contact() {
             />
           </div>
           <button type="submit" className="btn btn--primary btn--full">
-            Send Message ✉️
+            Send Message
           </button>
         </form>
       </div>
@@ -402,7 +408,7 @@ function Footer() {
         </div>
         <p className="footer__copy">© 2025 Janeesha. Designed &amp; built with </p>
         <div className="footer__links">
-          {["GitHub", "LinkedIn", "Twitter"].map((s) => (
+          {["GitHub", "LinkedIn"].map((s) => (
             <a key={s} href="#">{s}</a>
           ))}
         </div>
