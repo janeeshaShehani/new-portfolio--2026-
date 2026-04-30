@@ -12,33 +12,33 @@ export const SKILLS = {
 
 export const PROJECTS = [
   {
-    title: "AI Study Companion",
+    title: "KITS-Intelligent-Tutoring-System (Group Project)",
     description:
-      "A full-stack learning platform powered by GPT-4 that generates personalised quizzes, summarises lecture notes, and tracks student progress over time.",
+      "An AI-powered Intelligent Tutoring System that delivers personalized learning experiences by adapting content to student performance. It provides smart quizzes, real-time feedback, progress tracking, and a chatbot assistant to support learners and help educators monitor student understanding effectively.",
     tech: ["React", "Python", "FastAPI", "OpenAI"],
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=1200",
+    github: "https://github.com/AnuradhaRashmika/KITS-Intelligent-Tutoring-System.git"
+
   },
   {
-    title: "MediTrack",
+    title: "Employee Management System (Group Project)",
     description:
-      "Spring Boot microservices application for hospital inventory management with real-time analytics dashboard and role-based access control.",
-    tech: ["Spring Boot", "React", "PostgreSQL", "Docker"],
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80",
+      "A desktop-based application built using C# to manage employee records efficiently. It allows adding, updating, deleting, and viewing employee details, while improving HR operations through structured data management and easy user interaction.",
+    tech: ["C#","SQL" ],
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200" ,
+        github: "https://github.com/AnuradhaRashmika/EmployeeManagementSystem.git"
+
   },
   {
-    title: "EcoRoute",
+    title: "vehicle rent project (Group Project)",
     description:
-      "Smart city mobility app that calculates carbon-efficient travel routes using ML models trained on real commute data across Colombo.",
-    tech: ["Python", "TensorFlow", "React Native", "Node.js"],
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+      "A web-based vehicle rental platform that allows users to browse available vehicles and book them easily. The system provides a simple and responsive interface to view different types of vehicles and manage booking requests efficiently.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800",
+    github: "https://github.com/janeeshaShehani/vehicle-rent-project.git"
+
   },
-  {
-    title: "DevCollab",
-    description:
-      "Real-time collaborative coding environment with integrated AI code review, pair-programming sessions, and GitHub integration.",
-    tech: ["Next.js", "WebSockets", "Redis", "OpenAI"],
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
-  },
+  
 ];
 
 export const VOLUNTEERING = [
@@ -73,5 +73,16 @@ export const VOLUNTEERING = [
     description:
       "Volunteer Teacher for an educational outreach program by the Computer Science Students’ Association, University of Kelaniya, supporting students in under-resourced communities through academic guidance, motivation, and inclusive learning experiences.",
     icon: "💚",
+  },
+];
+
+export const SOCIAL_LINKS = [
+  {
+    name: "GitHub",
+    url: "https://github.com/janeeshaShehani",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/janeesha-divyanjalee-b3a841355/",
   },
 ];

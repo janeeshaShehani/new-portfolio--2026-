@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
-import { NAV_LINKS, TECH_TAGS, SKILLS, PROJECTS, VOLUNTEERING } from "./data";
+import { NAV_LINKS, TECH_TAGS, SKILLS, PROJECTS, VOLUNTEERING, SOCIAL_LINKS } from "./data";
 import sun from '../public/images/sun.png';
 import moon from '../public/images/moon.png';
 import Linkedin from '../public/images/linkedin.png';
@@ -195,7 +195,14 @@ function Projects() {
                 ))}
               </div>
               <div className="project-card__actions">
-                <a href="#" className="btn btn--primary btn--sm">GitHub →</a>
+                <a 
+                  href={p.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn--primary btn--sm"
+                >
+                  GitHub →
+                </a>
               </div>
             </div>
           </article>
@@ -290,8 +297,16 @@ const handleSubmit = async (e) => {
             </div>
           </div>
           <div className="contact__socials">
-            {["GitHub", "LinkedIn"].map((s) => (
-              <a key={s} href="#" className="social-btn">{s}</a>
+            {SOCIAL_LINKS.map((s) => (
+              <a
+                key={s.name}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-btn"
+              >
+                {s.name}
+              </a>
             ))}
           </div>
         </div>
@@ -345,9 +360,16 @@ function Footer() {
         </div>
         <p className="footer__copy">© 2025 Janeesha. Designed &amp; built with </p>
         <div className="footer__links">
-          {["GitHub", "LinkedIn"].map((s) => (
-            <a key={s} href="#">{s}</a>
-          ))}
+          {SOCIAL_LINKS.map((s) => (
+              <a
+                key={s.name}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {s.name}
+              </a>
+            ))}
         </div>
       </div>
     </footer>
