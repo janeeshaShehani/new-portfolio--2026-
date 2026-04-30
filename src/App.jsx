@@ -236,28 +236,24 @@ function Contact() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
 
-  emailjs.send(
-    process.env.REACT_APP_SERVICE_ID,
-    process.env.REACT_APP_TEMPLATE_ID,
-    {
-      name: form.name,
-      email: form.email,
-      message: form.message,
+  const res = await fetch("https://formspree.io/f/xpqbzark", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-    process.env.REACT_APP_PUBLIC_KEY
-  )
-  .then(() => {
+    body: JSON.stringify(form),
+  });
+
+  if (res.ok) {
     setSent(true);
     setForm({ name: "", email: "", message: "" });
-
     setTimeout(() => setSent(false), 4000);
-  })
-  .catch((error) => {
-    console.log("Email failed:", error);
-  });
+  } else {
+    alert("Something went wrong");
+  }
 };
 
   return (
@@ -340,6 +336,7 @@ function Contact() {
 
 function Footer() {
   return (
+    
     <footer className="footer">
       <div className="footer__inner">
         <div className="footer__logo">
