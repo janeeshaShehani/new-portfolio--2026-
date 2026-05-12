@@ -404,7 +404,7 @@ function Footer() {
           <span className="logo-badge">J</span>
           <span className="logo-name">Janeesha</span>
         </div>
-        <p className="footer__copy">© 2025 Janeesha. Designed &amp; built with ❤️</p>
+        <p className="footer__copy">© 2026 Janeesha Shehani.</p>
         <div className="footer__links">
           {SOCIAL_LINKS.map((s) => (
             <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer">
