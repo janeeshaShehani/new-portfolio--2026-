@@ -213,16 +213,15 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  background: transparent;
-  transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
-}
-
-.navbar--solid {
   background: var(--nav-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: var(--shadow-sm);
   border-bottom: 1px solid var(--border);
+  transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.navbar--solid {
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar__logo {
@@ -1057,25 +1056,58 @@ certificate
 }
 
 @media (max-width: 768px) {
-  .navbar__links {
+  .navbar {
+    padding: 0 16px;
+    /* Needed so absolute-positioned dropdown anchors to navbar */
     position: fixed;
+    overflow: visible;
+  }
+
+  .navbar__links {
+    position: absolute;
     top: var(--nav-h);
     left: 0; right: 0;
     background: var(--nav-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
     flex-direction: column;
-    padding: 20px;
-    gap: 8px;
+    align-items: flex-start;
+    padding: 12px 16px 20px;
+    gap: 2px;
+    /* Hidden above the navbar by default */
     transform: translateY(-110%);
-    transition: transform var(--transition);
+    visibility: hidden;
+    opacity: 0;
+    transition: transform var(--transition), opacity var(--transition), visibility var(--transition);
+    z-index: 999;
+    box-shadow: var(--shadow-md);
   }
-  .navbar__links.open { transform: translateY(0); }
-  .hamburger { display: flex; }
+  .navbar__links.open {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
 
-  /* Fix 6: hide Download CV button on mobile to prevent overlap */
+  .navbar__links li { width: 100%; }
+  .navbar__links li button {
+    width: 100%;
+    text-align: left;
+    padding: 11px 14px;
+    font-size: .95rem;
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-weight: 500;
+  }
+  .navbar__links li button:hover {
+    background: var(--accent-bg);
+    color: var(--accent);
+  }
+
+  .navbar__actions { gap: 8px; }
   .navbar__cv-btn { display: none; }
+  .hamburger { display: flex; }
 
   .skills__grid { grid-template-columns: 1fr 1fr; }
   .vol__grid    { grid-template-columns: 1fr; }
