@@ -1,5 +1,4 @@
-
-export const NAV_LINKS = ["Home", "About", "Skills", "Projects", "Volunteering", "Contact"];
+export const NAV_LINKS = ["Home", "About", "Skills", "Projects", "Certs","Volunteering", "Contact"];
 
 export const TECH_TAGS = ["React", "Node JS", "Python", "AI / ML"];
 
@@ -15,7 +14,7 @@ export const PROJECTS = [
     title: "KITS-Intelligent-Tutoring-System (Group Project)",
     description:
       "An AI-powered Intelligent Tutoring System that delivers personalized learning experiences by adapting content to student performance. It provides smart quizzes, real-time feedback, progress tracking, and a chatbot assistant to support learners and help educators monitor student understanding effectively.",
-    tech: ["React", "Python", "FastAPI", "OpenAI"],
+    tech: ["React", "Python", "FastAPI", "CNN",],
     image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=1200",
     github: "https://github.com/AnuradhaRashmika/KITS-Intelligent-Tutoring-System.git"
 
@@ -48,7 +47,7 @@ export const VOLUNTEERING = [
     year: "May 2024 - Nov 2024 ",
     description:
       "Public Visibility Team Member for Code Quest 24 (IEEE CS Chapter, UoK), contributing to event promotion, outreach, and engagement to increase participation in a Python programming workshop.",
-    icon: "🚀",
+   
   },
   {
     org: "UOK ISACA Student Group",
@@ -56,7 +55,7 @@ export const VOLUNTEERING = [
     year: "Jul 2024 - Aug 2024",
     description:
       "Event Organizing Committee Member for CyberZee 2024 (ISACA Student Group, UoK), supporting planning and execution of a cybersecurity-focused event.",
-    icon: "⚡",
+   
   },
   {
     org: "Leo Club University of Kelaniya",
@@ -64,7 +63,7 @@ export const VOLUNTEERING = [
     year: "Aug 2024 - May 2025",
     description:
       "PR & Marketing Coordinator for Waruwa (LEO Club, UoK – Differently Abled Avenue 24/25), contributing to promotional design and fundraising coordination to support care for differently-abled individuals and animals.",
-    icon: "💚",
+   
   },
   {
     org: "Computer Science Student's Association of University of Kelaniya",
@@ -72,7 +71,7 @@ export const VOLUNTEERING = [
     year: "2024 , 2025",
     description:
       "Volunteer Teacher for an educational outreach program by the Computer Science Students’ Association, University of Kelaniya, supporting students in under-resourced communities through academic guidance, motivation, and inclusive learning experiences.",
-    icon: "💚",
+  
   },
 ];
 
@@ -84,5 +83,25 @@ export const SOCIAL_LINKS = [
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/janeesha-divyanjalee-b3a841355/",
+  },
+];
+
+// Images use public folder paths — no import needed in data.js
+export const CERTIFICATIONS = [
+  {
+    title: "Python for Data Science, AI & Development",
+    issuer: "Coursera / IBM",
+    date: "2026",
+    type: "Online Certification",
+    link: "https://coursera.org/share/f5c11852a263d3c292df7e86f08059b8",
+    image: "/images/cert1.png",
+  },
+  {
+    title: "What is Data Science?",
+    issuer: "Coursera / IBM",
+    date: "2026",
+    type: "Online Certification",
+    link: "https://coursera.org/share/fe4c1d1af2e9762ca994560be5b05342",
+    image: "/images/cert2.png",
   },
 ];

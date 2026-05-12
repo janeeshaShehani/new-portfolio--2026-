@@ -1,25 +1,35 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
-import { NAV_LINKS, TECH_TAGS, SKILLS, PROJECTS, VOLUNTEERING, SOCIAL_LINKS } from "./data";
+
 import sun from '../public/images/sun.png';
 import moon from '../public/images/moon.png';
 import Linkedin from '../public/images/linkedin.png';
 import Location from '../public/images/location.png';
 import Email from '../public/images/email.png';
-import emailjs from '@emailjs/browser';
-
+import { NAV_LINKS, TECH_TAGS, SKILLS, PROJECTS, VOLUNTEERING, SOCIAL_LINKS, CERTIFICATIONS } from "./data";
 
 // ── COMPONENTS ───────────────────────────────────────────────────────────────
 
 function Navbar({ dark, toggleDark }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (menuOpen && navRef.current && !navRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, [menuOpen]);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id.toLowerCase());
@@ -28,7 +38,7 @@ function Navbar({ dark, toggleDark }) {
   };
 
   return (
-    <nav className={`navbar${scrolled ? " navbar--solid" : ""}${dark ? " dark" : ""}`}>
+    <nav ref={navRef} className={`navbar${scrolled ? " navbar--solid" : ""}${dark ? " dark" : ""}`}>
       <div className="navbar__logo" onClick={() => scrollTo("home")}>
         <span className="logo-badge">J</span>
         <span className="logo-name">Janeesha</span>
@@ -46,7 +56,7 @@ function Navbar({ dark, toggleDark }) {
         <button className="btn-icon" onClick={toggleDark} title="Toggle theme" aria-label="Toggle theme">
           {dark ? <img src={sun} alt="Sun" /> : <img src={moon} alt="Moon" />}
         </button>
-        <a href="#" className="btn btn--outline btn--sm" download>
+        <a href="#" className="btn btn--outline btn--sm navbar__cv-btn" download>
           Download CV
         </a>
       </div>
@@ -64,7 +74,7 @@ function Hero() {
       <div className="hero__left">
         <span className="hero__eyebrow">Welcome to my portfolio</span>
         <h1 className="hero__heading">
-          Hi, I'm <span className="gradient-text">Janeesha Shehani</span> 
+          Hi, I'm <span className="gradient-text">Janeesha Shehani</span>
         </h1>
         <h2 className="hero__sub">AI &amp; Full‑Stack Developer</h2>
         <p className="hero__tagline">
@@ -89,11 +99,7 @@ function Hero() {
       <div className="hero__right">
         <div className="hero__image-wrap">
           <div className="hero__image-ring" />
-          <img
-            src="/images/img1.png"
-            alt="Janeesha"
-            className="hero__image"
-          />
+          <img src="/images/img1.png" alt="Janeesha" className="hero__image" />
           <div className="hero__badge hero__badge--tl">
             <span>🎓</span> CS Undergrad
           </div>
@@ -112,7 +118,6 @@ function Hero() {
 }
 
 function About() {
-
   return (
     <section id="about" className="about section">
       <div className="about__image-col">
@@ -138,8 +143,6 @@ function About() {
           When I'm not coding, you'll find me mentoring student developers, contributing to
           open-source, or exploring the latest breakthroughs in generative AI.
         </p>
-
-        
       </div>
     </section>
   );
@@ -195,9 +198,9 @@ function Projects() {
                 ))}
               </div>
               <div className="project-card__actions">
-                <a 
-                  href={p.github} 
-                  target="_blank" 
+                <a
+                  href={p.github}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn--primary btn--sm"
                 >
@@ -206,6 +209,64 @@ function Projects() {
               </div>
             </div>
           </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Certifications() {
+  return (
+    <section id="certs" className="section">
+      <div className="section-header">
+        <span className="section-label">Credentials</span>
+        <h2 className="section-heading">Certifications &amp; Courses</h2>
+        <p className="section-sub">Online certifications completed</p>
+      </div>
+
+      <div className="cert-grid">
+        {CERTIFICATIONS.map((c, i) => (
+          <div key={i} className="cert-card card">
+            <h3 className="cert-title">{c.title}</h3>
+
+            {c.image && (
+              <div className="cert-image-wrapper">
+                <img src={c.image} alt={c.title} className="cert-image" />
+              </div>
+            )}
+
+            <div className="cert-row">
+              <span className="cert-meta-label">Issuer : </span>
+              <span className="cert-meta-value">{c.issuer}</span>
+            </div>
+
+            <div className="cert-row">
+              <span className="cert-meta-label">Issued : </span>
+              <span className="cert-meta-value">{c.date}</span>
+            </div>
+
+            {c.skills && c.skills.length > 0 && (
+              <div className="cert-skills">
+                <span className="cert-meta-label">Skills : </span>
+                <div className="cert-tags">
+                  {c.skills.map((s, j) => (
+                    <span key={j} className="tag tag-green">{s}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {c.link && (
+              <a
+                href={c.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cert-btn"
+              >
+                View Credential
+              </a>
+            )}
+          </div>
         ))}
       </div>
     </section>
@@ -243,25 +304,23 @@ function Contact() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const res = await fetch("https://formspree.io/f/xpqbzark", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(form),
-  });
+    const res = await fetch("https://formspree.io/f/xpqbzark", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
 
-  if (res.ok) {
-    setSent(true);
-    setForm({ name: "", email: "", message: "" });
-    setTimeout(() => setSent(false), 4000);
-  } else {
-    alert("Something went wrong");
-  }
-};
+    if (res.ok) {
+      setSent(true);
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setSent(false), 4000);
+    } else {
+      alert("Something went wrong");
+    }
+  };
 
   return (
     <section id="contact" className="contact section">
@@ -298,13 +357,7 @@ const handleSubmit = async (e) => {
           </div>
           <div className="contact__socials">
             {SOCIAL_LINKS.map((s) => (
-              <a
-                key={s.name}
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-              >
+              <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="social-btn">
                 {s.name}
               </a>
             ))}
@@ -320,25 +373,19 @@ const handleSubmit = async (e) => {
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="name">Name</label>
-              <input
-                id="name" name="name" type="text" placeholder="Your name"
-                value={form.name} onChange={handleChange} required
-              />
+              <input id="name" name="name" type="text" placeholder="Your name"
+                value={form.name} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input
-                id="email" name="email" type="email" placeholder="your@email.com"
-                value={form.email} onChange={handleChange} required
-              />
+              <input id="email" name="email" type="email" placeholder="your@email.com"
+                value={form.email} onChange={handleChange} required />
             </div>
           </div>
           <div className="form-group">
             <label htmlFor="message">Message</label>
-            <textarea
-              id="message" name="message" rows={5} placeholder="Tell me about your project..."
-              value={form.message} onChange={handleChange} required
-            />
+            <textarea id="message" name="message" rows={5} placeholder="Tell me about your project..."
+              value={form.message} onChange={handleChange} required />
           </div>
           <button type="submit" className="btn btn--primary btn--full">
             Send Message
@@ -351,25 +398,19 @@ const handleSubmit = async (e) => {
 
 function Footer() {
   return (
-    
     <footer className="footer">
       <div className="footer__inner">
         <div className="footer__logo">
           <span className="logo-badge">J</span>
           <span className="logo-name">Janeesha</span>
         </div>
-        <p className="footer__copy">© 2025 Janeesha. Designed &amp; built with </p>
+        <p className="footer__copy">© 2025 Janeesha. Designed &amp; built with ❤️</p>
         <div className="footer__links">
           {SOCIAL_LINKS.map((s) => (
-              <a
-                key={s.name}
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {s.name}
-              </a>
-            ))}
+            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer">
+              {s.name}
+            </a>
+          ))}
         </div>
       </div>
     </footer>
@@ -392,6 +433,7 @@ export default function App() {
       <About />
       <Skills />
       <Projects />
+      <Certifications />
       <Volunteering />
       <Contact />
       <Footer />
