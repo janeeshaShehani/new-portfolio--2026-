@@ -56,7 +56,11 @@ function Navbar({ dark, toggleDark }) {
         <button className="btn-icon" onClick={toggleDark} title="Toggle theme" aria-label="Toggle theme">
           {dark ? <img src={sun} alt="Sun" /> : <img src={moon} alt="Moon" />}
         </button>
-        <a href="#" className="btn btn--outline btn--sm navbar__cv-btn" download>
+        <a
+          href="/Janeesha Shehani.pdf"
+          className="btn btn--outline btn--sm navbar__cv-btn"
+          download
+        >
           Download CV
         </a>
       </div>
@@ -76,7 +80,7 @@ function Hero() {
         <h1 className="hero__heading">
           Hi, I'm <span className="gradient-text">Janeesha Shehani</span>
         </h1>
-        <h2 className="hero__sub">AI &amp; Full‑Stack Developer</h2>
+        <h2 className="hero__sub">Full‑Stack Developer | Data Analysis | Data Engineering</h2>
         <p className="hero__tagline">
           I craft intelligent web experiences — blending clean code with machine
           learning to build products that actually matter.

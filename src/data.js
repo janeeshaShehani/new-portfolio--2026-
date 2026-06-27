@@ -1,15 +1,31 @@
 export const NAV_LINKS = ["Home", "About", "Skills", "Projects", "Certs","Volunteering", "Contact"];
 
-export const TECH_TAGS = ["React", "Node JS", "Python", "AI / ML"];
+export const TECH_TAGS = ["React", "Node JS", "Python", "AI / ML", "Power BI"];
 
 export const SKILLS = {
   Frontend: ["React.js", "HTML5", "CSS", "JavaScript", "Tailwind CSS", "Figma"],
   Backend: ["Node.js", "REST APIs", "PostgreSQL", "MongoDB"],
   Programming: ["Python", "Java", "TypeScript", "C#", "SQL"],
-  Tools: ["Git & GitHub", "VS Code", "Postman"],
+  Databases: [ "MongoDB", "PostgreSQL", "My SQL", "SQL Server"],
+  Visualization:["Matplotlib", "Pandas", "Numpy Streamlit", "Power BI"],
+  Tools: ["Git & GitHub", "VS Code", "Postman","Visual Studio"],
 };
 
 export const PROJECTS = [
+  {
+    title:"GarageFinder – Vehicle Service Platform (Web Application)",
+    description:"Developed a vehicle service platform to help users find nearby garages and vehicle services. Built responsive frontend interfaces using React.js and implemented role-based garage dashboards. Added garage registration, login authentication, and search filtering features.",
+    tech: ["React js", "JavaScript", "Node.js", " MongoDB",],
+    image: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc",
+     github: "https://github.com/janeeshaShehani/GarageFinder.git"
+  },
+  {
+    title:"Customer Shopping Behavior Analytics Dashboard",
+    description:"Analyzed customer shopping data using Python, SQL, and PostgreSQL. Performed data cleaning, preprocessing, and feature engineering with Pandas. Developed an interactive Power BI dashboard to visualize customer behavior and spending trends.",
+    tech: ["Python", "Pandas", "PostgreSQL", "SQL", "Power BI", "Jupyter Notebook"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+     github: "https://github.com/janeeshaShehani/customer_shopping_behavior_power_BI_project.git"
+  },
   {
     title: "KITS-Intelligent-Tutoring-System (Group Project)",
     description:
@@ -42,7 +58,7 @@ export const PROJECTS = [
 
 export const VOLUNTEERING = [
   {
-    org: "IEEE Computer Society ofuniversity of Kelaniya",
+    org: "IEEE Computer Society of university of Kelaniya",
     role: "Public Visibility Team Member",
     year: "May 2024 - Nov 2024 ",
     description:
