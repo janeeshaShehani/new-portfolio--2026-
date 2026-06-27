@@ -89,7 +89,7 @@ function Hero() {
           <a href="#projects" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById("projects").scrollIntoView({ behavior: "smooth" }); }}>
             View Projects
           </a>
-          <a href="#" className="btn btn--outline" download>
+          <a href="/Janeesha Shehani.pdf" className="btn btn--outline" download>
             Download CV
           </a>
         </div>
